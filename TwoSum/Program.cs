@@ -7,24 +7,28 @@ namespace TwoSums
     {
         public static int[] TwoSumsSorting(int[] nums, int target)
         {
-            Dictionary<int, int> map = new Dictionary<int, int>();
+            int arrayLength = nums.Length;
 
-            for (int i = 0; i < nums.Length; i++)
+            if (nums == null || arrayLength < 2)
             {
-                int num = target - nums[i];
-
-                if (map.TryGetValue(num, out int index))
-                {
-                    return new int[] { i, index };
-                }
-                else
-                {
-                    map[nums[i]] = i;
-                }
-
+                return Array.Empty<int>();
             }
-            return new int[2];
 
+            for (int i = 0; i < arrayLength; i++)
+            {
+                for(int j = i +1; j <arrayLength; i++)
+                {
+                    if (nums[i] + nums[j] == target)
+                    {
+                        return new int[] {i, j};
+                    }          
+                    else
+                    {
+                        Console.WriteLine("No two sum solution");
+                    }
+                }
+            }
+            return Array.Empty <int>();
         }
 
         public static void Main(string[] args)
@@ -41,7 +45,7 @@ namespace TwoSums
             try
             {
                 int[] result = TwoSumsSorting(nums, target);
-                Console.WriteLine("Result: " + "[" + result[1] + "," + result[0] + "]");    
+                Console.WriteLine("Result: " + "[" + result[0] + "," + result[1] + "]");    
             }
             catch (ArgumentException e)
             {
