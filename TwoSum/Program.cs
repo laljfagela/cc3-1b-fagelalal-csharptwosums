@@ -16,19 +16,15 @@ namespace TwoSums
 
             for (int i = 0; i < arrayLength; i++)
             {
-                for(int j = i +1; j <arrayLength; i++)
+                for(int j = i + 1; j < arrayLength; j++)
                 {
                     if (nums[i] + nums[j] == target)
                     {
-                        return new int[] {i, j};
-                    }          
-                    else
-                    {
-                        Console.WriteLine("No two sum solution");
+                        return new int[] { i, j };
                     }
                 }
             }
-            return Array.Empty <int>();
+            return Array.Empty<int>();
         }
 
         public static void Main(string[] args)
@@ -42,14 +38,14 @@ namespace TwoSums
             Console.Write("Input target: ");
             int target = Convert.ToInt32(Console.ReadLine());
 
-            try
-            {
-                int[] result = TwoSumsSorting(nums, target);
+            int[] result = TwoSumsSorting(nums, target);    
+            if (result.Length == 2)
+            { 
                 Console.WriteLine("Result: " + "[" + result[0] + "," + result[1] + "]");    
             }
-            catch (ArgumentException e)
+            else
             {
-                Console.WriteLine(e.Message);
+                Console.WriteLine("No two sum solution");
             }
         }
     }
